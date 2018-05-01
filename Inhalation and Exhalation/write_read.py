@@ -6,6 +6,11 @@ while True:
   print(strftime("{%Y-%m-%d,%H:%M:%S,"))
   print data
   print("}\n")
+  with io.open('data.json', 'w', encoding='utf8') as outfile:
+    str_ = json.dumps(data,
+                      indent=4, sort_keys=True,
+                      separators=(',', ': '), ensure_ascii=False)
+    outfile.write(to_unicode(str_))
   f.write(data)
   f.flush()
 f.close()
